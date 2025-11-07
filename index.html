@@ -47,7 +47,7 @@
         margin-bottom: 0.3em;
       }
       .cover p {
-        margin-bottom: 25px;
+        margin-bottom: 15px;
       }
       .cover button {
         background-color: #fbb1bd;
@@ -61,6 +61,12 @@
       }
       .cover button:hover {
         background: #ff99aa;
+      }
+      #guest-name {
+        margin-top: 15px;
+        font-size: 1.2em;
+        color: #ffe5e5;
+        font-weight: 500;
       }
       @keyframes fadeIn {
         from {
@@ -237,6 +243,7 @@
       <div class="cover-content">
         <h1>Fani &amp; Herman</h1>
         <p>Undangan Pernikahan<br />19 November 2025</p>
+        <div id="guest-name"></div>
         <button onclick="openInvite()">💌 Buka Undangan</button>
       </div>
     </div>
@@ -377,11 +384,22 @@
       const musicBtn = document.getElementById("music-btn");
       let isPlaying = false;
 
+      // Ambil nama tamu dari URL parameter
+      function getGuestName() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const guest = urlParams.get("nama");
+        return guest ? guest : "Tamu Istimewa";
+      }
+
       function openInvite() {
+        const guest = getGuestName();
+        document.getElementById("guest-name").innerText = `Halo, ${guest}!`;
+
         document.getElementById("cover").style.opacity = "0";
         setTimeout(() => {
           document.getElementById("cover").style.display = "none";
           document.getElementById("main").style.display = "block";
+          musicBtn.style.display = "block";
           playMusic();
         }, 800);
       }
@@ -421,6 +439,7 @@
       function openMap() {
         window.open("https://maps.app.goo.gl/CG5uEnGzcJfbhkC78", "_blank");
       }
+
       function confirmRSVP() {
         window.open(
           "https://wa.me/6282217877316?text=Halo%20Fani%20%26%20Herman,%20saya%20ingin%20konfirmasi%20kehadiran.",
@@ -433,8 +452,8 @@
       window.addEventListener("scroll", () => {
         const triggerBottom = window.innerHeight * 0.8;
         elements.forEach((el) => {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < triggerBottom) el.classList.add("visible");
+          if (el.getBoundingClientRect().top < triggerBottom)
+            el.classList.add("visible");
         });
       });
 
