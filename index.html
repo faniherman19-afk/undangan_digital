@@ -1,226 +1,490 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Undangan Fani & Herman</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background:#e6f0ff;color:#4b2c2c;overflow-x:hidden;}
-.cover{height:100vh;background:url("gambar1.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:white;position:relative;}
-.cover::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.45);}
-.cover-content{position:relative;z-index:1;animation:fadeIn 2s ease;}
-.cover h1{font-family:'Great Vibes',cursive;font-size:3em;margin-bottom:.3em;}
-.cover p{margin-bottom:25px;}
-.cover button{background-color:#fbb1bd;color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:1em;cursor:pointer;transition:0.3s;}
-.cover button:hover{background:#ff99aa;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);} }
-.main{display:none;animation:fadeIn 1s ease;}
-header{text-align:center;background:linear-gradient(180deg,#ffe5ec,#e6f0ff);padding:60px 20px 40px;border-bottom-left-radius:40px;border-bottom-right-radius:40px;}
-header h2{font-family:'Great Vibes',cursive;font-size:2.2em;color:#b85a70;}
-header p{margin-top:10px;font-size:0.95em;color:#5a3d3d;}
-.section{padding:30px 20px;text-align:center;}
-.profile-card{text-align:center;margin:0 10px;}
-.profile-card img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #fbb1bd;}
-.profile-card h4{margin-top:10px;color:#b85a70;font-family:'Great Vibes',cursive;font-size:1.3em;}
-.profile-card p{color:#5a3d3d;font-size:0.85em;}
-.details{margin-top:20px;line-height:1.6;font-size:0.9em;}
-.button-group{margin-top:15px;}
-.button-group button{background:#b85a70;color:white;border:none;padding:10px 18px;margin:5px;border-radius:25px;cursor:pointer;transition:0.3s;font-size:0.9em;}
-.button-group button:hover{background:#a34c61;}
-.gallery{display:flex;flex-direction:column;gap:15px;margin-top:20px;align-items:center;}
-.gallery img{width:90%;height:auto;border-radius:10px;object-fit:cover;transition:transform 0.3s ease;}
-.gallery img:hover{transform:scale(1.02);}
-#rsvp button{background:#f77a8a;color:white;border:none;padding:12px 25px;border-radius:25px;cursor:pointer;transition:0.3s;margin-top:15px;font-size:0.9em;}
-#rsvp button:hover{background:#e16476;}
-footer{text-align:center;font-size:0.9em;color:#664b4b;padding:20px;background:#fff0f3;}
-.fade-scroll{opacity:0;transform:translateY(20px);transition:opacity 1s,transform 1s;}
-.fade-scroll.visible{opacity:1;transform:translateY(0);}
-#music-btn{position:fixed;bottom:20px;right:20px;background:#f77a8a;color:white;border:none;border-radius:50%;width:50px;height:50px;box-shadow:0 4px 8px rgba(0,0,0,0.3);cursor:pointer;font-size:1.3em;z-index:100;display:none;}
-#music-btn:hover{background:#e16476;}
-@media(max-width:480px){
-  .cover h1{font-size:2.2em;}
-  header h2{font-size:1.8em;}
-  .profile-card img{width:100px;height:100px;}
-  .profile-card h4{font-size:1.1em;}
-  .details{font-size:0.85em;}
-  .button-group button,#rsvp button{padding:10px 15px;font-size:0.85em;}
-}
-</style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undangan Fani & Herman</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #e6f0ff;
+        color: #4b2c2c;
+        overflow-x: hidden;
+      }
+      .cover {
+        height: 100vh;
+        background: url("gambar1.jpg") center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+      }
+      .cover::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+      }
+      .cover-content {
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 2s ease;
+      }
+      .cover h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 3em;
+        margin-bottom: 0.3em;
+      }
+      .cover p {
+        margin-bottom: 25px;
+      }
+      .cover button {
+        background-color: #fbb1bd;
+        color: #fff;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .cover button:hover {
+        background: #ff99aa;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .main {
+        display: none;
+        animation: fadeIn 1s ease;
+      }
+      header {
+        text-align: center;
+        background: linear-gradient(180deg, #ffe5ec, #e6f0ff);
+        padding: 60px 20px 40px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+      }
+      header h2 {
+        font-family: "Great Vibes", cursive;
+        font-size: 2.2em;
+        color: #b85a70;
+      }
+      header p {
+        margin-top: 10px;
+        font-size: 0.95em;
+        color: #5a3d3d;
+      }
+      .section {
+        padding: 30px 20px;
+        text-align: center;
+      }
+      .profile-card {
+        text-align: center;
+        margin: 0 10px;
+      }
+      .profile-card img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fbb1bd;
+      }
+      .profile-card h4 {
+        margin-top: 10px;
+        color: #b85a70;
+        font-family: "Great Vibes", cursive;
+        font-size: 1.3em;
+      }
+      .profile-card p {
+        color: #5a3d3d;
+        font-size: 0.85em;
+      }
+      .details {
+        margin-top: 20px;
+        line-height: 1.6;
+        font-size: 0.9em;
+      }
+      .button-group {
+        margin-top: 15px;
+      }
+      .button-group button {
+        background: #b85a70;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        margin: 5px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 0.9em;
+      }
+      .button-group button:hover {
+        background: #a34c61;
+      }
+      .gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+        align-items: center;
+      }
+      .gallery img {
+        width: 90%;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .gallery img:hover {
+        transform: scale(1.02);
+      }
+      #rsvp button {
+        background: #f77a8a;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 15px;
+        font-size: 0.9em;
+      }
+      #rsvp button:hover {
+        background: #e16476;
+      }
+      footer {
+        text-align: center;
+        font-size: 0.9em;
+        color: #664b4b;
+        padding: 20px;
+        background: #fff0f3;
+      }
+      .fade-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s, transform 1s;
+      }
+      .fade-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      #music-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #f77a8a;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        font-size: 1.3em;
+        z-index: 100;
+        display: none;
+      }
+      #music-btn:hover {
+        background: #e16476;
+      }
+      @media (max-width: 480px) {
+        .cover h1 {
+          font-size: 2.2em;
+        }
+        header h2 {
+          font-size: 1.8em;
+        }
+        .profile-card img {
+          width: 100px;
+          height: 100px;
+        }
+        .profile-card h4 {
+          font-size: 1.1em;
+        }
+        .details {
+          font-size: 0.85em;
+        }
+        .button-group button,
+        #rsvp button {
+          padding: 10px 15px;
+          font-size: 0.85em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- COVER -->
+    <div id="cover" class="cover">
+      <div class="cover-content">
+        <h1>Fani &amp; Herman</h1>
+        <p>Undangan Pernikahan<br />19 November 2025</p>
+        <button onclick="openInvite()">💌 Buka Undangan</button>
+      </div>
+    </div>
 
-<!-- COVER -->
-<div id="cover" class="cover">
-  <div class="cover-content">
-    <h1>Fani &amp; Herman</h1>
-    <p>Undangan Pernikahan<br>19 November 2025</p>
-    <button onclick="openInvite()">💌 Buka Undangan</button>
-  </div>
-</div>
+    <!-- MAIN -->
+    <div id="main" class="main">
+      <header>
+        <h2>Fani Aljaber &amp; Suherman</h2>
+        <p>
+          Assalamu'Alaikum Warahmatullahi Wabarakatuh Dengan memohon rahmat dan
+          ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk
+          hadir dalam acara pernikahan kami.
+        </p>
+      </header>
 
-<!-- MAIN -->
-<div id="main" class="main">
-<header>
-<h2>Fani Aljaber &amp; Suherman</h2>
-<p>Assalamu'Alaikum Warahmatullahi Wabarakatuh Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.</p>
-</header>
+      <section class="section fade-scroll" id="profiles">
+        <h3>Profil Mempelai</h3>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            align-items: center;
+            margin-top: 20px;
+          "
+        >
+          <div class="profile-card">
+            <img src="solo1.jpg" alt="Fani" />
+            <h4>Fani Aljaber, S.Pd</h4>
+            <p><b>Putri pertama dari:</b> Bapak Mahjudin & Ibu Marna Ambu</p>
+            <p style="font-style: italic">
+              "Selalu ada cinta di setiap langkah."
+            </p>
+          </div>
+          <div class="profile-card">
+            <img src="solo2.jpg" alt="Herman" />
+            <h4>Suherman</h4>
+            <p><b>Putra kedua dari:</b> Bapak Kasman & Ibu Yusni</p>
+            <p style="font-style: italic">
+              "Bersama kita membangun masa depan."
+            </p>
+          </div>
+        </div>
 
-<section class="section fade-scroll" id="profiles">
-<h3>Profil Mempelai</h3>
-<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:25px;align-items:center;margin-top:20px;">
-  <div class="profile-card">
-    <img src="solo1.jpg" alt="Fani" />
-    <h4>Fani Aljaber, S.Pd</h4>
-    <p><b>Putri pertama dari:</b> Bapak Mahjudin & Ibu Marna Ambu</p>
-    <p style="font-style: italic">"Selalu ada cinta di setiap langkah."</p>
-  </div>
-  <div class="profile-card">
-    <img src="solo2.jpg" alt="Herman" />
-    <h4>Suherman</h4>
-    <p><b>Putra kedua dari:</b> Bapak Kasman & Ibu Yusni</p>
-    <p style="font-style: italic">"Bersama kita membangun masa depan."</p>
-  </div>
-</div>
+        <div class="details">
+          <b>🗓️ Tanggal:</b> 19 November 2025<br />
+          <b>🕒 Jam:</b> 13.00 - 16.00<br />
+          <b>📍 Lokasi:</b> Depan Halaman Rumah Mempelai Wanita
+        </div>
+        <div class="button-group">
+          <button onclick="openMap()">📍 Lihat Lokasi</button>
+        </div>
+        <div
+          class="details"
+          style="font-style: italic; color: #5a3d3d; margin-top: 10px"
+        >
+          Merupakan Suatu Kehormatan dan Kebahagiaan Bagi Kami, Apabila
+          Bapak/Ibu/Sdr.(i) Berkenan Hadir Untuk Memberikan Doa Restu Kepada
+          Kedua Mempelai, Atas Kehadiran Bapak/Ibu/Sdr.(i) Kami Ucapkan
+          Terimakasih
+        </div>
+      </section>
 
-<div class="details">
-<b>🗓️ Tanggal:</b> 19 November 2025<br>
-<b>🕒 Jam:</b> 13.00 - 16.00<br>
-<b>📍 Lokasi:</b> Depan Halaman Rumah Mempelai Wanita
-</div>
-<div class="button-group">
-<button onclick="openMap()">📍 Lihat Lokasi</button>
-</div>
-<div class="details" style="font-style: italic; color:#5a3d3d; margin-top:10px;">
-Merupakan Suatu Kehormatan dan Kebahagiaan Bagi Kami, Apabila Bapak/Ibu/Sdr.(i) Berkenan Hadir Untuk Memberikan Doa Restu Kepada Kedua Mempelai, Atas Kehadiran Bapak/Ibu/Sdr.(i) Kami Ucapkan Terimakasih
-</div>
-</section>
+      <section class="section fade-scroll">
+        <h3>Cerita Kami</h3>
+        <p
+          style="
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            text-align: justify;
+            line-height: 1.6;
+          "
+        >
+          Fani dan Herman pertama kali bertemu di tempat latihan silat pada
+          tahun 2018. Awalnya mereka hanya berinteraksi sebagai teman latihan,
+          saling menyemangati dan belajar dari satu sama lain.<br /><br />
+          Seiring waktu, mereka menemukan banyak kesamaan — mulai dari hobi,
+          nilai hidup, hingga cara mereka menghadapi tantangan. Dari tawa hingga
+          suka duka, hubungan mereka semakin erat.<br /><br />
+          Mereka belajar untuk saling mendukung, memahami satu sama lain, dan
+          berbagi impian. Setiap momen kecil, mulai dari latihan bersama,
+          ngobrol di sore hari, hingga perjalanan liburan, membentuk kenangan
+          indah yang menguatkan cinta mereka.<br /><br />
+          Kini, setelah perjalanan penuh cerita dan pengalaman, mereka siap
+          melanjutkan langkah bersama menuju hari bahagia, mengikat janji suci
+          di hadapan keluarga dan sahabat tercinta.
+        </p>
+      </section>
 
-<section class="section fade-scroll">
-<h3>Cerita Kami</h3>
-<p style="max-width:600px;margin:0 auto;font-style:italic;text-align:justify;line-height:1.6;">
-Fani dan Herman pertama kali bertemu di tempat latihan silat pada tahun 2018. Awalnya mereka hanya berinteraksi sebagai teman latihan, saling menyemangati dan belajar dari satu sama lain.<br><br>
-Seiring waktu, mereka menemukan banyak kesamaan — mulai dari hobi, nilai hidup, hingga cara mereka menghadapi tantangan. Dari tawa hingga suka duka, hubungan mereka semakin erat.<br><br>
-Mereka belajar untuk saling mendukung, memahami satu sama lain, dan berbagi impian. Setiap momen kecil, mulai dari latihan bersama, ngobrol di sore hari, hingga perjalanan liburan, membentuk kenangan indah yang menguatkan cinta mereka.<br><br>
-Kini, setelah perjalanan penuh cerita dan pengalaman, mereka siap melanjutkan langkah bersama menuju hari bahagia, mengikat janji suci di hadapan keluarga dan sahabat tercinta.
-</p>
-</section>
+      <section class="section fade-scroll">
+        <h3>Galeri Kami</h3>
+        <div class="gallery">
+          <img src="gambar2.jpg" alt="" />
+          <img src="gambar3.jpg" alt="" />
+          <img src="gambar4.jpg" alt="" />
+          <img src="gambar6.jpg" alt="gambar pertama ketemu" />
+          <img src="gambar7.jpg" alt="" />
+          <img src="gambar8.jpg" alt="" />
+        </div>
+      </section>
 
-<section class="section fade-scroll">
-<h3>Galeri Kami</h3>
-<div class="gallery">
-<img src="gambar2.jpg" alt="" />
-<img src="gambar3.jpg" alt="" />
-<img src="gambar4.jpg" alt="" />
-<img src="gambar6.jpg" alt="gambar pertama ketemu" />
-<img src="gambar7.jpg" alt="" />
-<img src="gambar8.jpg" alt="" />
-</div>
-</section>
+      <section class="section fade-scroll" id="rsvp">
+        <h3>Konfirmasi Kehadiran</h3>
+        <p>Kehadiran Anda merupakan kehormatan bagi kami.</p>
+        <button onclick="confirmRSVP()">Konfirmasi via WhatsApp</button>
+      </section>
 
-<section class="section fade-scroll" id="rsvp">
-<h3>Konfirmasi Kehadiran</h3>
-<p>Kehadiran Anda merupakan kehormatan bagi kami.</p>
-<button onclick="confirmRSVP()">Konfirmasi via WhatsApp</button>
-</section>
+      <footer>
+        <p>© 2025 Fani &amp; Herman — Undangan Digital</p>
+      </footer>
+    </div>
 
-<footer>
-<p>© 2025 Fani &amp; Herman — Undangan Digital</p>
-</footer>
-</div>
+    <!-- MUSIK -->
+    <button id="music-btn" onclick="toggleMusic()">🎵</button>
+    <audio id="bgMusic" preload="auto" loop>
+      <source src="ChristianBautistaThewayyoulookatme.mp3" type="audio/mpeg" />
+      Browser Anda tidak mendukung elemen audio.
+    </audio>
 
-<!-- MUSIK -->
-<button id="music-btn" onclick="toggleMusic()">🎵</button>
-<audio id="bgMusic" preload="auto" loop>
-  <source src="ChristianBautistaThewayyoulookatme.mp3" type="audio/mpeg"/>
-  Browser Anda tidak mendukung elemen audio.
-</audio>
+    <!-- SALJU -->
+    <canvas
+      id="snowCanvas"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 99;
+      "
+    ></canvas>
 
-<!-- SALJU -->
-<canvas id="snowCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99;"></canvas>
+    <script>
+      const bgMusic = document.getElementById("bgMusic");
+      const musicBtn = document.getElementById("music-btn");
+      let isPlaying = false;
 
-<script>
-const bgMusic=document.getElementById("bgMusic");
-const musicBtn=document.getElementById("music-btn");
-let isPlaying=false;
+      function openInvite() {
+        document.getElementById("cover").style.opacity = "0";
+        setTimeout(() => {
+          document.getElementById("cover").style.display = "none";
+          document.getElementById("main").style.display = "block";
+          playMusic();
+        }, 800);
+      }
 
-function openInvite(){
-  document.getElementById("cover").style.opacity="0";
-  setTimeout(()=>{
-    document.getElementById("cover").style.display="none";
-    document.getElementById("main").style.display="block";
-    playMusic();
-  },800);
-}
+      function playMusic() {
+        bgMusic
+          .play()
+          .then(() => {
+            isPlaying = true;
+            musicBtn.innerText = "⏸️";
+          })
+          .catch(() => {
+            document.body.addEventListener(
+              "click",
+              () => {
+                bgMusic.play();
+                isPlaying = true;
+                musicBtn.innerText = "⏸️";
+              },
+              { once: true }
+            );
+          });
+      }
 
-function playMusic(){
-  bgMusic.play().then(()=>{isPlaying=true;musicBtn.innerText="⏸️";}).catch(()=>{
-    document.body.addEventListener("click",()=>{
-      bgMusic.play();isPlaying=true;musicBtn.innerText="⏸️";
-    },{once:true});
-  });
-}
+      function toggleMusic() {
+        if (isPlaying) {
+          bgMusic.pause();
+          isPlaying = false;
+          musicBtn.innerText = "🎵";
+        } else {
+          bgMusic.play();
+          isPlaying = true;
+          musicBtn.innerText = "⏸️";
+        }
+      }
 
-function toggleMusic(){
-  if(isPlaying){bgMusic.pause();isPlaying=false;musicBtn.innerText="🎵";}
-  else{bgMusic.play();isPlaying=true;musicBtn.innerText="⏸️";}
-}
+      function openMap() {
+        window.open("https://maps.app.goo.gl/CG5uEnGzcJfbhkC78", "_blank");
+      }
+      function confirmRSVP() {
+        window.open(
+          "https://wa.me/6282217877316?text=Halo%20Fani%20%26%20Herman,%20saya%20ingin%20konfirmasi%20kehadiran.",
+          "_blank"
+        );
+      }
 
-function openMap(){window.open("https://maps.app.goo.gl/CG5uEnGzcJfbhkC78","_blank");}
-function confirmRSVP(){window.open("https://wa.me/6282217877316?text=Halo%20Fani%20%26%20Herman,%20saya%20ingin%20konfirmasi%20kehadiran.","_blank");}
+      // Efek scroll muncul
+      const elements = document.querySelectorAll(".fade-scroll");
+      window.addEventListener("scroll", () => {
+        const triggerBottom = window.innerHeight * 0.8;
+        elements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < triggerBottom) el.classList.add("visible");
+        });
+      });
 
-// Efek scroll muncul
-const elements=document.querySelectorAll(".fade-scroll");
-window.addEventListener("scroll",()=>{
-  const triggerBottom=window.innerHeight*0.8;
-  elements.forEach(el=>{const rect=el.getBoundingClientRect();if(rect.top<triggerBottom)el.classList.add("visible");});
-});
-
-// Efek salju
-const canvas = document.getElementById("snowCanvas");
-const ctx = canvas.getContext("2d");
-let width = canvas.width = window.innerWidth;
-let height = canvas.height = window.innerHeight;
-const numFlakes = 100;
-const flakes = [];
-for (let i = 0; i < numFlakes; i++) {
-    flakes.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 4 + 1,
-        d: Math.random() * numFlakes
-    });
-}
-function drawSnow() {
-    ctx.clearRect(0,0,width,height);
-    ctx.fillStyle = "rgba(255,255,255,0.8)";
-    ctx.beginPath();
-    for(let i=0;i<numFlakes;i++){
-        let f = flakes[i];
-        ctx.moveTo(f.x,f.y);
-        ctx.arc(f.x,f.y,f.r,0,Math.PI*2,true);
-    }
-    ctx.fill();
-    moveSnow();
-}
-let angle = 0;
-function moveSnow(){
-    angle += 0.01;
-    for(let i=0;i<numFlakes;i++){
-        let f = flakes[i];
-        f.y += Math.cos(angle + f.d) + 1 + f.r/2;
-        f.x += Math.sin(angle) * 2;
-        if(f.y > height){ f.y=0; f.x=Math.random()*width; }
-        if(f.x > width) f.x = 0;
-        if(f.x < 0) f.x = width;
-    }
-}
-setInterval(drawSnow,25);
-window.addEventListener("resize",()=>{
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-});
-</script>
-</body>
+      // Efek salju
+      const canvas = document.getElementById("snowCanvas");
+      const ctx = canvas.getContext("2d");
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+      const numFlakes = 100;
+      const flakes = [];
+      for (let i = 0; i < numFlakes; i++) {
+        flakes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 4 + 1,
+          d: Math.random() * numFlakes,
+        });
+      }
+      function drawSnow() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = "rgba(255,255,255,0.8)";
+        ctx.beginPath();
+        for (let i = 0; i < numFlakes; i++) {
+          let f = flakes[i];
+          ctx.moveTo(f.x, f.y);
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+        }
+        ctx.fill();
+        moveSnow();
+      }
+      let angle = 0;
+      function moveSnow() {
+        angle += 0.01;
+        for (let i = 0; i < numFlakes; i++) {
+          let f = flakes[i];
+          f.y += Math.cos(angle + f.d) + 1 + f.r / 2;
+          f.x += Math.sin(angle) * 2;
+          if (f.y > height) {
+            f.y = 0;
+            f.x = Math.random() * width;
+          }
+          if (f.x > width) f.x = 0;
+          if (f.x < 0) f.x = width;
+        }
+      }
+      setInterval(drawSnow, 25);
+      window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+    </script>
+  </body>
 </html>
