@@ -49,6 +49,13 @@
       .cover p {
         margin-bottom: 15px;
       }
+      #guest-name {
+        margin-top: 15px;
+        font-size: 1.8em;
+        color: #ffe5e5;
+        font-weight: 600;
+        min-height: 2em;
+      }
       .cover button {
         background-color: #fbb1bd;
         color: #fff;
@@ -61,12 +68,6 @@
       }
       .cover button:hover {
         background: #ff99aa;
-      }
-      #guest-name {
-        margin-top: 15px;
-        font-size: 1.2em;
-        color: #ffe5e5;
-        font-weight: 500;
       }
       @keyframes fadeIn {
         from {
@@ -241,7 +242,7 @@
     <!-- COVER -->
     <div id="cover" class="cover">
       <div class="cover-content">
-        <h1>Fani &amp; Herman</h1>
+        <h1>Fani & Herman</h1>
         <p>Undangan Pernikahan<br />19 November 2025</p>
         <div id="guest-name"></div>
         <button onclick="openInvite()">💌 Buka Undangan</button>
@@ -251,7 +252,7 @@
     <!-- MAIN -->
     <div id="main" class="main">
       <header>
-        <h2>Fani Aljaber &amp; Suherman</h2>
+        <h2>Fani Aljaber & Suherman</h2>
         <p>
           Assalamu'Alaikum Warahmatullahi Wabarakatuh Dengan memohon rahmat dan
           ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk
@@ -288,7 +289,6 @@
             </p>
           </div>
         </div>
-
         <div class="details">
           <b>🗓️ Tanggal:</b> 19 November 2025<br />
           <b>🕒 Jam:</b> 13.00 - 16.00<br />
@@ -339,14 +339,31 @@
         <h3>Galeri Kami</h3>
         <div class="gallery">
           <img src="gambar2.jpg" alt="" />
-          <img src="gambar3.jpg" alt="" />
-          <img src="gambar4.jpg" alt="" />
-          <img src="gambar6.jpg" alt="gambar pertama ketemu" />
           <img src="gambar7.jpg" alt="" />
           <img src="gambar8.jpg" alt="" />
         </div>
       </section>
+      <!-- Doa Section (Single Copy Restored) -->
+      <section class="section fade-scroll" id="doa">
+        <h3>Doa</h3>
+        <p
+          style="
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            line-height: 1.7;
+          "
+        >
+          "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+          pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
+          dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
+          kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat
+          tanda-tanda (kebesaran-Nya) bagi kaum yang berpikir."<br /><br />
+          <b>(QS. Ar-Rum: 21)</b>
+        </p>
+      </section>
 
+      <!-- Doa Section Added Below Galeri Foto -->
       <section class="section fade-scroll" id="rsvp">
         <h3>Konfirmasi Kehadiran</h3>
         <p>Kehadiran Anda merupakan kehormatan bagi kami.</p>
@@ -354,7 +371,7 @@
       </section>
 
       <footer>
-        <p>© 2025 Fani &amp; Herman — Undangan Digital</p>
+        <p>© 2025 Fani & Herman — Undangan Digital</p>
       </footer>
     </div>
 
@@ -362,7 +379,6 @@
     <button id="music-btn" onclick="toggleMusic()">🎵</button>
     <audio id="bgMusic" preload="auto" loop>
       <source src="ChristianBautistaThewayyoulookatme.mp3" type="audio/mpeg" />
-      Browser Anda tidak mendukung elemen audio.
     </audio>
 
     <!-- SALJU -->
@@ -384,46 +400,43 @@
       const musicBtn = document.getElementById("music-btn");
       let isPlaying = false;
 
-      // Ambil nama tamu dari URL parameter
+      // Nama tamu dengan animasi mengetik
+      function typeGuestName(text, elementId, speed = 100) {
+        const element = document.getElementById(elementId);
+        element.innerText = "";
+        let i = 0;
+        const timer = setInterval(() => {
+          element.innerText += text.charAt(i);
+          i++;
+          if (i >= text.length) clearInterval(timer);
+        }, speed);
+      }
+
       function getGuestName() {
         const urlParams = new URLSearchParams(window.location.search);
         const guest = urlParams.get("nama");
         return guest ? guest : "Tamu Istimewa";
       }
+      typeGuestName(`Halo, ${getGuestName()}!`, "guest-name", 100);
+      musicBtn.style.display = "block";
 
+      // Buka undangan
       function openInvite() {
-        const guest = getGuestName();
-        document.getElementById("guest-name").innerText = `Halo, ${guest}!`;
-
         document.getElementById("cover").style.opacity = "0";
         setTimeout(() => {
           document.getElementById("cover").style.display = "none";
           document.getElementById("main").style.display = "block";
-          musicBtn.style.display = "block";
-          playMusic();
+          bgMusic
+            .play()
+            .then(() => {
+              isPlaying = true;
+              musicBtn.innerText = "⏸️";
+            })
+            .catch(() => {});
         }, 800);
       }
 
-      function playMusic() {
-        bgMusic
-          .play()
-          .then(() => {
-            isPlaying = true;
-            musicBtn.innerText = "⏸️";
-          })
-          .catch(() => {
-            document.body.addEventListener(
-              "click",
-              () => {
-                bgMusic.play();
-                isPlaying = true;
-                musicBtn.innerText = "⏸️";
-              },
-              { once: true }
-            );
-          });
-      }
-
+      // Tombol musik
       function toggleMusic() {
         if (isPlaying) {
           bgMusic.pause();
@@ -436,10 +449,10 @@
         }
       }
 
+      // Map & RSVP
       function openMap() {
         window.open("https://maps.app.goo.gl/CG5uEnGzcJfbhkC78", "_blank");
       }
-
       function confirmRSVP() {
         window.open(
           "https://wa.me/6282217877316?text=Halo%20Fani%20%26%20Herman,%20saya%20ingin%20konfirmasi%20kehadiran.",
@@ -447,7 +460,7 @@
         );
       }
 
-      // Efek scroll muncul
+      // Scroll animation
       const elements = document.querySelectorAll(".fade-scroll");
       window.addEventListener("scroll", () => {
         const triggerBottom = window.innerHeight * 0.8;
@@ -457,7 +470,7 @@
         });
       });
 
-      // Efek salju
+      // Salju
       const canvas = document.getElementById("snowCanvas");
       const ctx = canvas.getContext("2d");
       let width = (canvas.width = window.innerWidth);
