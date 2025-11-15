@@ -49,13 +49,28 @@
       .cover p {
         margin-bottom: 15px;
       }
+
+      /* ——————————  FIX NAMA PANJANG —————————— */
       #guest-name {
         margin-top: 15px;
         font-size: 1.8em;
         color: #ffe5e5;
         font-weight: 600;
         min-height: 2em;
+
+        padding: 0 15px;
+        text-align: center;
+        line-height: 1.2;
+
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
       }
+      /* ——————————————————————————————— */
+
       .cover button {
         background-color: #fbb1bd;
         color: #fff;
@@ -238,6 +253,7 @@
       }
     </style>
   </head>
+
   <body>
     <!-- COVER -->
     <div id="cover" class="cover">
@@ -289,14 +305,17 @@
             </p>
           </div>
         </div>
+
         <div class="details">
           <b>🗓️ Tanggal:</b> 19 November 2025<br />
           <b>🕒 Jam:</b> 13.00 - 16.00<br />
           <b>📍 Lokasi:</b> Depan Halaman Rumah Mempelai Wanita
         </div>
+
         <div class="button-group">
           <button onclick="openMap()">📍 Lihat Lokasi</button>
         </div>
+
         <div
           class="details"
           style="font-style: italic; color: #5a3d3d; margin-top: 10px"
@@ -343,7 +362,8 @@
           <img src="gambar8.jpg" alt="" />
         </div>
       </section>
-      <!-- Doa Section (Single Copy Restored) -->
+
+      <!-- Doa Section -->
       <section class="section fade-scroll" id="doa">
         <h3>Doa</h3>
         <p
@@ -363,7 +383,7 @@
         </p>
       </section>
 
-      <!-- Doa Section Added Below Galeri Foto -->
+      <!-- RSVP -->
       <section class="section fade-scroll" id="rsvp">
         <h3>Konfirmasi Kehadiran</h3>
         <p>Kehadiran Anda merupakan kehormatan bagi kami.</p>
@@ -400,7 +420,6 @@
       const musicBtn = document.getElementById("music-btn");
       let isPlaying = false;
 
-      // Nama tamu dengan animasi mengetik
       function typeGuestName(text, elementId, speed = 100) {
         const element = document.getElementById(elementId);
         element.innerText = "";
@@ -420,7 +439,6 @@
       typeGuestName(`Halo, ${getGuestName()}!`, "guest-name", 100);
       musicBtn.style.display = "block";
 
-      // Buka undangan
       function openInvite() {
         document.getElementById("cover").style.opacity = "0";
         setTimeout(() => {
@@ -436,7 +454,6 @@
         }, 800);
       }
 
-      // Tombol musik
       function toggleMusic() {
         if (isPlaying) {
           bgMusic.pause();
@@ -449,10 +466,10 @@
         }
       }
 
-      // Map & RSVP
       function openMap() {
         window.open("https://maps.app.goo.gl/CG5uEnGzcJfbhkC78", "_blank");
       }
+
       function confirmRSVP() {
         window.open(
           "https://wa.me/6282217877316?text=Halo%20Fani%20%26%20Herman,%20saya%20ingin%20konfirmasi%20kehadiran.",
@@ -460,7 +477,6 @@
         );
       }
 
-      // Scroll animation
       const elements = document.querySelectorAll(".fade-scroll");
       window.addEventListener("scroll", () => {
         const triggerBottom = window.innerHeight * 0.8;
@@ -470,7 +486,6 @@
         });
       });
 
-      // Salju
       const canvas = document.getElementById("snowCanvas");
       const ctx = canvas.getContext("2d");
       let width = (canvas.width = window.innerWidth);
@@ -485,6 +500,7 @@
           d: Math.random() * numFlakes,
         });
       }
+
       function drawSnow() {
         ctx.clearRect(0, 0, width, height);
         ctx.fillStyle = "rgba(255,255,255,0.8)";
@@ -497,7 +513,9 @@
         ctx.fill();
         moveSnow();
       }
+
       let angle = 0;
+
       function moveSnow() {
         angle += 0.01;
         for (let i = 0; i < numFlakes; i++) {
@@ -512,7 +530,9 @@
           if (f.x < 0) f.x = width;
         }
       }
+
       setInterval(drawSnow, 25);
+
       window.addEventListener("resize", () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
